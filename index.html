@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDI Bougainvillea</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0F1A17;--card:#162420;--card2:#1A2B26;--rose:#C23A6B;--rose2:#B83260;--text:#F5F5F0;--muted:rgba(245,245,240,0.55);--border:rgba(194,58,107,0.18);--bc:rgba(255,255,255,0.06)}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+    .glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(194,58,107,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .container{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 24px}
+    header{padding:32px 0 0;text-align:center;animation:fadeUp .8s ease both}
+    .logo{display:inline-flex;align-items:center;gap:10px;opacity:.75}
+    .logo-text{font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+    .hero{padding:56px 0 40px;text-align:center;animation:fadeUp .8s ease .1s both}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(194,58,107,0.12);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:11.5px;font-weight:500;color:var(--rose);margin-bottom:28px;text-transform:uppercase}
+    .dot{width:5px;height:5px;border-radius:50%;background:var(--rose);animation:pulse 2s infinite}
+    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,9vw,52px);font-weight:600;line-height:1.1;margin-bottom:20px}
+    h1 em{font-style:italic;color:var(--rose)}
+    .sub{font-size:15px;font-weight:300;line-height:1.65;color:var(--muted);max-width:340px;margin:0 auto 40px}
+    .form-card{background:var(--card);border:1px solid var(--bc);border-radius:20px;padding:32px 28px;margin-bottom:32px;animation:fadeUp .8s ease .2s both}
+    .form-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:6px}
+    .form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+    .fg{margin-bottom:14px}.fg label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+    .fg input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--bc);border-radius:10px;padding:13px 16px;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border-color .2s,background .2s}
+    .fg input::placeholder{color:rgba(245,245,240,0.3)}.fg input:focus{border-color:rgba(194,58,107,0.4);background:rgba(194,58,107,0.04)}
+    .btn{width:100%;background:linear-gradient(135deg,var(--rose2),var(--rose));border:none;border-radius:12px;padding:16px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;color:#fff;cursor:pointer;margin-top:8px;box-shadow:0 4px 24px rgba(194,58,107,0.25);transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 32px rgba(194,58,107,0.35)}
+    .disclaimer{font-size:11.5px;color:rgba(245,245,240,0.3);text-align:center;margin-top:14px;line-height:1.5}
+    .features{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;animation:fadeUp .8s ease .3s both}
+    .fi{display:flex;align-items:center;gap:14px;background:var(--card2);border:1px solid var(--bc);border-radius:14px;padding:16px 18px;transition:border-color .2s}.fi:hover{border-color:var(--border)}
+    .ficon{width:38px;height:38px;border-radius:10px;background:rgba(194,58,107,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+    .ft strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}.ft span{font-size:12.5px;color:var(--muted);line-height:1.4}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bc);border:1px solid var(--bc);border-radius:16px;overflow:hidden;margin-bottom:40px;animation:fadeUp .8s ease .4s both}
+    .si{background:var(--card);padding:20px 12px;text-align:center}
+    .sn{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
+    .sl{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .author{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:40px;padding:24px;text-align:center;animation:fadeUp .8s ease .5s both}
+    .av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose2),var(--rose));display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid var(--border)}
+    .an{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600}.ab{font-size:12.5px;color:var(--muted);line-height:1.5;max-width:280px}
+    .stars{display:flex;gap:3px;color:#D4A843;font-size:13px}
+    footer{border-top:1px solid var(--bc);padding:24px 0 40px;text-align:center}footer p{font-size:12px;color:rgba(245,245,240,0.25);line-height:1.6}footer a{color:rgba(245,245,240,0.4);text-decoration:none}
+    .success{display:none;background:var(--card);border:1px solid rgba(194,58,107,0.3);border-radius:20px;padding:40px 28px;text-align:center;margin-bottom:32px}
+    .success.show{display:block;animation:fadeUp .5s ease both}.form-card.hide{display:none}
+    .si-icon{font-size:40px;margin-bottom:16px}.st{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:10px}.stx{font-size:14px;color:var(--muted);line-height:1.6}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="container">
+    <header><div class="logo"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="rgba(194,58,107,0.4)" stroke-width="1"/><path d="M14 6C14 6 8 10 8 15C8 18.3 10.7 21 14 21C17.3 21 20 18.3 20 15C20 10 14 6 14 6Z" fill="rgba(194,58,107,0.7)"/><path d="M14 10C14 10 11 13 11 16C11 17.7 12.3 19 14 19C15.7 19 17 17.7 17 16C17 13 14 10 14 10Z" fill="rgba(245,245,240,0.9)"/></svg><span class="logo-text">EDI Bougainvillea</span></div></header>
+    <section class="hero"><div class="badge"><span class="dot"></span>Plataforma em lançamento</div><h1>Sua Bougainvillea<br>nunca mais vai <em>sofrer.</em></h1><p class="sub">Diagnóstico profissional por IA, comunidade especializada e calendário inteligente de cuidados — na palma da sua mão.</p></section>
+    <div class="form-card" id="formCard">
+      <div class="form-title">Acesso antecipado gratuito</div>
+      <p class="form-sub">Seja uma das primeiras a testar e ganhe 30 dias premium grátis.</p>
+      <form onsubmit="handleSubmit(event)">
+        <div class="fg"><label>Seu nome</label><input type="text" id="nm" placeholder="Como você se chama?" required /></div>
+        <div class="fg"><label>WhatsApp</label><input type="tel" id="ph" placeholder="(00) 00000-0000" required oninput="fmtPhone(this)" /></div>
+        <div class="fg"><label>E-mail</label><input type="email" id="em" placeholder="seu@email.com" required /></div>
+        <button class="btn" id="submitBtn">Quero acesso gratuito →</button>
+      </form>
+      <p class="disclaimer">Sem cartão de crédito. Seus dados estão protegidos.</p>
+    </div>
+    <div class="success" id="successCard"><div class="si-icon">🌸</div><div class="st">Você está na lista!</div><p class="stx">Vamos te avisar assim que o acesso for liberado. Fique de olho no WhatsApp e e-mail.</p></div>
+    <div class="features">
+      <div class="fi"><div class="ficon">🔬</div><div class="ft"><strong>Diagnóstico por imagem com IA</strong><span>Fotografe sua planta e receba diagnóstico profissional em segundos.</span></div></div>
+      <div class="fi"><div class="ficon">🌿</div><div class="ft"><strong>Comunidade especializada</strong><span>Conecte-se com cultivadoras de todo o Brasil.</span></div></div>
+      <div class="fi"><div class="ficon">📅</div><div class="ft"><strong>Calendário inteligente</strong><span>Lembretes de rega, adubação e poda para cada planta.</span></div></div>
+    </div>
+    <div class="stats"><div class="si"><div class="sn">20+</div><div class="sl">Anos de exp.</div></div><div class="si"><div class="sn">200k</div><div class="sl">Seguidores</div></div><div class="si"><div class="sn">70+</div><div class="sl">Variedades</div></div></div>
+    <div class="author"><div class="av">🌺</div><div><div class="an">Edileuza Oliveira</div><div class="stars">★★★★★</div></div><p class="ab">Especialista em Bougainvillea com mais de 20 anos de experiência e seguida por mais de 200 mil cultivadoras.</p></div>
+    <footer><p>© 2025 EDI Bougainvillea · <a href="#">Privacidade</a> · <a href="#">Termos</a></p></footer>
+  </div>
+  <script>
+    function fmtPhone(i){let v=i.value.replace(/\D/g,'').slice(0,11);if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3');else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d*)$/,'($1) $2-$3');else if(v.length>2)v=v.replace(/^(\d{2})(\d*)$/,'($1) $2');i.value=v}
+    function handleSubmit(e){e.preventDefault();const b=document.getElementById('submitBtn');b.textContent='Enviando...';b.disabled=true;setTimeout(()=>{document.getElementById('formCard').classList.add('hide');document.getElementById('successCard').classList.add('show');document.getElementById('successCard').scrollIntoView({behavior:'smooth',block:'center'})},800)}
+  </script>
+</body>
+</html>
