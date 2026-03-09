@@ -3,80 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EDI Bougainvillea</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>EDI Bougainvillea — Diagnóstico Inteligente para sua Primavera</title>
+  <meta name="description" content="20 anos cultivando beleza. Agora com IA. Diagnóstico profissional para sua bougainvillea direto no seu celular." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#0F1A17;--card:#162420;--card2:#1A2B26;--rose:#C23A6B;--rose2:#B83260;--text:#F5F5F0;--muted:rgba(245,245,240,0.55);--border:rgba(194,58,107,0.18);--bc:rgba(255,255,255,0.06)}
-    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
-    .glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(194,58,107,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
-    .container{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 24px}
-    header{padding:32px 0 0;text-align:center;animation:fadeUp .8s ease both}
-    .logo{display:inline-flex;align-items:center;gap:10px;opacity:.75}
-    .logo-text{font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
-    .hero{padding:56px 0 40px;text-align:center;animation:fadeUp .8s ease .1s both}
-    .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(194,58,107,0.12);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:11.5px;font-weight:500;color:var(--rose);margin-bottom:28px;text-transform:uppercase}
-    .dot{width:5px;height:5px;border-radius:50%;background:var(--rose);animation:pulse 2s infinite}
-    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,9vw,52px);font-weight:600;line-height:1.1;margin-bottom:20px}
-    h1 em{font-style:italic;color:var(--rose)}
-    .sub{font-size:15px;font-weight:300;line-height:1.65;color:var(--muted);max-width:340px;margin:0 auto 40px}
-    .form-card{background:var(--card);border:1px solid var(--bc);border-radius:20px;padding:32px 28px;margin-bottom:32px;animation:fadeUp .8s ease .2s both}
-    .form-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:6px}
-    .form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
-    .fg{margin-bottom:14px}.fg label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-    .fg input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--bc);border-radius:10px;padding:13px 16px;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border-color .2s,background .2s}
-    .fg input::placeholder{color:rgba(245,245,240,0.3)}.fg input:focus{border-color:rgba(194,58,107,0.4);background:rgba(194,58,107,0.04)}
-    .btn{width:100%;background:linear-gradient(135deg,var(--rose2),var(--rose));border:none;border-radius:12px;padding:16px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;color:#fff;cursor:pointer;margin-top:8px;box-shadow:0 4px 24px rgba(194,58,107,0.25);transition:transform .15s,box-shadow .15s}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 32px rgba(194,58,107,0.35)}
-    .disclaimer{font-size:11.5px;color:rgba(245,245,240,0.3);text-align:center;margin-top:14px;line-height:1.5}
-    .features{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;animation:fadeUp .8s ease .3s both}
-    .fi{display:flex;align-items:center;gap:14px;background:var(--card2);border:1px solid var(--bc);border-radius:14px;padding:16px 18px;transition:border-color .2s}.fi:hover{border-color:var(--border)}
-    .ficon{width:38px;height:38px;border-radius:10px;background:rgba(194,58,107,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-    .ft strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}.ft span{font-size:12.5px;color:var(--muted);line-height:1.4}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bc);border:1px solid var(--bc);border-radius:16px;overflow:hidden;margin-bottom:40px;animation:fadeUp .8s ease .4s both}
-    .si{background:var(--card);padding:20px 12px;text-align:center}
-    .sn{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
-    .sl{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-    .author{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:40px;padding:24px;text-align:center;animation:fadeUp .8s ease .5s both}
-    .av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose2),var(--rose));display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid var(--border)}
-    .an{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600}.ab{font-size:12.5px;color:var(--muted);line-height:1.5;max-width:280px}
-    .stars{display:flex;gap:3px;color:#D4A843;font-size:13px}
-    footer{border-top:1px solid var(--bc);padding:24px 0 40px;text-align:center}footer p{font-size:12px;color:rgba(245,245,240,0.25);line-height:1.6}footer a{color:rgba(245,245,240,0.4);text-decoration:none}
-    .success{display:none;background:var(--card);border:1px solid rgba(194,58,107,0.3);border-radius:20px;padding:40px 28px;text-align:center;margin-bottom:32px}
-    .success.show{display:block;animation:fadeUp .5s ease both}.form-card.hide{display:none}
-    .si-icon{font-size:40px;margin-bottom:16px}.st{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:10px}.stx{font-size:14px;color:var(--muted);line-height:1.6}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-deep: #0C1A14; --green-mid: #112318; --green-card: #162B1F;
+      --green-border: rgba(255,255,255,0.07); --rose: #B83260; --rose-light: #C93A6E;
+      --rose-glow: rgba(184,50,96,0.18); --cream: #F5F0EA;
+      --text-muted: rgba(245,240,234,0.55); --text-sub: rgba(245,240,234,0.35);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--green-deep); color: var(--cream); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(12,26,20,0.95) 0%, transparent 100%); backdrop-filter: blur(4px); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; letter-spacing: 0.04em; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--rose); }
+    .nav-cta { background: var(--rose); color: white; border: none; border-radius: 100px; padding: 10px 24px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--rose-light); transform: translateY(-1px); }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -10%; left: -10%; width: 60vw; height: 60vw; max-width: 700px; max-height: 700px; background: radial-gradient(circle, rgba(184,50,96,0.10) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: -15%; right: -10%; width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(22,43,31,0.9) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .petal { position: absolute; border-radius: 0 100% 0 100%; opacity: 0.12; animation: floatPetal linear infinite; }
+    .p1 { width:18px;height:18px; background:var(--rose); top:15%; left:8%; animation-duration:14s; animation-delay:-2s; }
+    .p2 { width:12px;height:12px; background:var(--rose-light); top:30%; right:12%; animation-duration:18s; animation-delay:-7s; }
+    .p3 { width:22px;height:22px; background:var(--rose); top:60%; left:5%; animation-duration:20s; animation-delay:-12s; }
+    .p4 { width:10px;height:10px; background:var(--cream); top:70%; right:8%; animation-duration:16s; animation-delay:-4s; }
+    .p5 { width:16px;height:16px; background:var(--rose); top:45%; left:15%; animation-duration:22s; animation-delay:-9s; }
+    @keyframes floatPetal { 0% { transform: translateY(0) rotate(0deg); opacity: 0.12; } 50% { opacity: 0.22; } 100% { transform: translateY(-80px) rotate(180deg); opacity: 0.12; } }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(184,50,96,0.12); border: 1px solid rgba(184,50,96,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; font-weight: 500; color: var(--rose-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 32px; animation: fadeUp 0.8s ease both; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-light); animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; max-width: 800px; margin-bottom: 24px; animation: fadeUp 0.8s ease 0.15s both; }
+    .hero h1 em { font-style: italic; color: var(--rose-light); }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-muted); max-width: 520px; line-height: 1.7; margin-bottom: 48px; animation: fadeUp 0.8s ease 0.3s both; }
+    .hero-form { display: flex; gap: 12px; max-width: 480px; width: 100%; animation: fadeUp 0.8s ease 0.45s both; }
+    .hero-form input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid var(--green-border); border-radius: 100px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--cream); outline: none; transition: border-color 0.2s, background 0.2s; }
+    .hero-form input::placeholder { color: var(--text-sub); }
+    .hero-form input:focus { border-color: rgba(184,50,96,0.5); background: rgba(255,255,255,0.09); }
+    .hero-form button { background: var(--rose); color: white; border: none; border-radius: 100px; padding: 16px 28px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(184,50,96,0.25); }
+    .hero-form button:hover { background: var(--rose-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,50,96,0.35); }
+    .hero-social { margin-top: 28px; display: flex; gap: 32px; align-items: center; font-size: 0.82rem; color: var(--text-sub); animation: fadeUp 0.8s ease 0.6s both; }
+    .hero-social strong { color: var(--cream); font-weight: 500; }
+    .success-msg { display: none; flex-direction: column; align-items: center; gap: 12px; animation: fadeUp 0.5s ease both; }
+    .success-msg .check { width: 56px; height: 56px; border-radius: 50%; background: rgba(184,50,96,0.15); border: 1px solid rgba(184,50,96,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .success-msg p { color: var(--cream); font-size: 1rem; }
+    .success-msg small { color: var(--text-muted); font-size: 0.85rem; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--green-border), transparent); margin: 0 40px; }
+    .metrics { display: flex; justify-content: center; gap: 0; padding: 56px 40px; flex-wrap: wrap; }
+    .metric { text-align: center; padding: 20px 48px; border-right: 1px solid var(--green-border); animation: fadeUp 0.7s ease both; }
+    .metric:last-child { border-right: none; }
+    .metric-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 6px; }
+    .metric-num span { color: var(--rose); }
+    .metric-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.78rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; max-width: 600px; margin-bottom: 56px; }
+    .section-title em { font-style: italic; color: var(--rose-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--green-card); border: 1px solid var(--green-border); border-radius: 20px; padding: 32px; transition: border-color 0.25s, transform 0.25s; }
+    .feature-card:hover { border-color: rgba(184,50,96,0.25); transform: translateY(-4px); }
+    .feature-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--rose-glow); border: 1px solid rgba(184,50,96,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 20px; }
+    .feature-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; margin-bottom: 10px; }
+    .feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+    .about { padding: 80px 40px; background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-deep) 100%); border-top: 1px solid var(--green-border); border-bottom: 1px solid var(--green-border); }
+    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.35; font-style: italic; }
+    .about-quote::before { content: '“'; display: block; font-size: 4rem; line-height: 1; color: var(--rose); opacity: 0.4; margin-bottom: -16px; }
+    .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+    .about-sig { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--cream); margin-top: 28px; }
+    .about-sig small { display: block; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 0.8rem; color: var(--rose); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+    .cta-section { padding: 100px 40px; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--rose-glow) 0%, transparent 65%); pointer-events: none; }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 300; line-height: 1.15; margin-bottom: 20px; position: relative; }
+    .cta-section h2 em { font-style: italic; color: var(--rose-light); }
+    .cta-section p { color: var(--text-muted); font-size: 1rem; margin-bottom: 44px; position: relative; }
+    .cta-form { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 420px; margin: 0 auto; position: relative; }
+    .cta-form input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid var(--green-border); border-radius: 100px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--cream); outline: none; transition: border-color 0.2s; }
+    .cta-form input::placeholder { color: var(--text-sub); }
+    .cta-form input:focus { border-color: rgba(184,50,96,0.5); }
+    .cta-form button { width: 100%; background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%); color: white; border: none; border-radius: 100px; padding: 18px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 6px 32px rgba(184,50,96,0.3); }
+    .cta-form button:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(184,50,96,0.4); }
+    .cta-privacy { font-size: 0.78rem; color: var(--text-sub); margin-top: 8px; }
+    footer { border-top: 1px solid var(--green-border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--cream); }
+    .footer-logo span { color: var(--rose); }
+    footer p { font-size: 0.8rem; color: var(--text-sub); }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; } .hero { padding: 100px 20px 60px; }
+      .hero-form { flex-direction: column; } .hero-form button { width: 100%; text-align: center; }
+      .metrics { gap: 0; } .metric { padding: 16px 24px; border-right: none; border-bottom: 1px solid var(--green-border); width: 50%; }
+      .metric:last-child { border-bottom: none; } .section { padding: 60px 20px; } .about { padding: 60px 20px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; } .cta-section { padding: 70px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; } .divider { margin: 0 20px; }
+    }
   </style>
 </head>
 <body>
-  <div class="glow"></div>
-  <div class="container">
-    <header><div class="logo"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="rgba(194,58,107,0.4)" stroke-width="1"/><path d="M14 6C14 6 8 10 8 15C8 18.3 10.7 21 14 21C17.3 21 20 18.3 20 15C20 10 14 6 14 6Z" fill="rgba(194,58,107,0.7)"/><path d="M14 10C14 10 11 13 11 16C11 17.7 12.3 19 14 19C15.7 19 17 17.7 17 16C17 13 14 10 14 10Z" fill="rgba(245,245,240,0.9)"/></svg><span class="logo-text">EDI Bougainvillea</span></div></header>
-    <section class="hero"><div class="badge"><span class="dot"></span>Plataforma em lançamento</div><h1>Sua Bougainvillea<br>nunca mais vai <em>sofrer.</em></h1><p class="sub">Diagnóstico profissional por IA, comunidade especializada e calendário inteligente de cuidados — na palma da sua mão.</p></section>
-    <div class="form-card" id="formCard">
-      <div class="form-title">Acesso antecipado gratuito</div>
-      <p class="form-sub">Seja uma das primeiras a testar e ganhe 30 dias premium grátis.</p>
-      <form onsubmit="handleSubmit(event)">
-        <div class="fg"><label>Seu nome</label><input type="text" id="nm" placeholder="Como você se chama?" required /></div>
-        <div class="fg"><label>WhatsApp</label><input type="tel" id="ph" placeholder="(00) 00000-0000" required oninput="fmtPhone(this)" /></div>
-        <div class="fg"><label>E-mail</label><input type="email" id="em" placeholder="seu@email.com" required /></div>
-        <button class="btn" id="submitBtn">Quero acesso gratuito →</button>
-      </form>
-      <p class="disclaimer">Sem cartão de crédito. Seus dados estão protegidos.</p>
+  <nav>
+    <a href="#" class="nav-logo">EDI <span>Bougainvillea</span></a>
+    <a href="#cta" class="nav-cta">Quero acesso gratuito</a>
+  </nav>
+  <section class="hero">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="hero-badge"><div class="badge-dot"></div>Diagnóstico por IA · 20 anos de expertise</div>
+    <h1>Sua bougainvillea vai <em>florescer</em> como nunca antes</h1>
+    <p>Diagnóstico inteligente, guias de cultivo e suporte de quem passou 20 anos dominando cada variedade. Grátis para começar.</p>
+    <div class="hero-form" id="hero-form-wrap">
+      <input type="email" id="hero-email" placeholder="Seu melhor e-mail" autocomplete="email" />
+      <button onclick="submitLead('hero')">Quero acesso →</button>
     </div>
-    <div class="success" id="successCard"><div class="si-icon">🌸</div><div class="st">Você está na lista!</div><p class="stx">Vamos te avisar assim que o acesso for liberado. Fique de olho no WhatsApp e e-mail.</p></div>
-    <div class="features">
-      <div class="fi"><div class="ficon">🔬</div><div class="ft"><strong>Diagnóstico por imagem com IA</strong><span>Fotografe sua planta e receba diagnóstico profissional em segundos.</span></div></div>
-      <div class="fi"><div class="ficon">🌿</div><div class="ft"><strong>Comunidade especializada</strong><span>Conecte-se com cultivadoras de todo o Brasil.</span></div></div>
-      <div class="fi"><div class="ficon">📅</div><div class="ft"><strong>Calendário inteligente</strong><span>Lembretes de rega, adubação e poda para cada planta.</span></div></div>
-    </div>
-    <div class="stats"><div class="si"><div class="sn">20+</div><div class="sl">Anos de exp.</div></div><div class="si"><div class="sn">200k</div><div class="sl">Seguidores</div></div><div class="si"><div class="sn">70+</div><div class="sl">Variedades</div></div></div>
-    <div class="author"><div class="av">🌺</div><div><div class="an">Edileuza Oliveira</div><div class="stars">★★★★★</div></div><p class="ab">Especialista em Bougainvillea com mais de 20 anos de experiência e seguida por mais de 200 mil cultivadoras.</p></div>
-    <footer><p>© 2025 EDI Bougainvillea · <a href="#">Privacidade</a> · <a href="#">Termos</a></p></footer>
+    <div class="success-msg" id="hero-success"><div class="check">🌺</div><p>Perfeito! Você está na lista.</p><small>Fique de olho no seu e-mail.</small></div>
+    <div class="hero-social"><span><strong>148K</strong> no Instagram</span><span>·</span><span><strong>70+</strong> variedades</span><span>·</span><span><strong>20 anos</strong> de experiência</span></div>
+  </section>
+  <div class="divider"></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-num">148<span>K</span></div><div class="metric-label">Seguidores</div></div>
+    <div class="metric"><div class="metric-num">20<span>+</span></div><div class="metric-label">Anos cultivando</div></div>
+    <div class="metric"><div class="metric-num">70<span>+</span></div><div class="metric-label">Variedades</div></div>
+    <div class="metric"><div class="metric-num">3<span>×</span></div><div class="metric-label">Diagnósticos gratuitos</div></div>
   </div>
+  <div class="divider"></div>
+  <div class="section">
+    <div class="section-label">O que você vai encontrar</div>
+    <div class="section-title">Tecnologia aplicada ao cultivo <em>profissional</em></div>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🔬</div><h3>Diagnóstico por IA</h3><p>Fotografe sua planta e receba análise completa: causas, tratamento passo a passo e cronograma de recuperação. Em segundos.</p></div>
+      <div class="feature-card"><div class="feature-icon">🌿</div><h3>Guias de Cultivo</h3><p>Poda, adubação, substrato, pH, controle de pragas — tudo baseado nos 20 anos de Edileuza adaptados para o seu clima regional.</p></div>
+      <div class="feature-card"><div class="feature-icon">🌸</div><h3>Comunidade de Cultivadores</h3><p>Compartilhe fotos, tire dúvidas e troque experiências com pessoas que têm a mesma paixão pela Bougainvillea.</p></div>
+      <div class="feature-card"><div class="feature-icon">📅</div><h3>Calendário de Cuidados</h3><p>Lembretes inteligentes de adubação, poda e rega personalizados para cada planta do seu jardim.</p></div>
+      <div class="feature-card"><div class="feature-icon">🏆</div><h3>Variedades Raras</h3><p>Catálogo completo com mais de 70 variedades identificadas, fotos e características para você reconhecer cada uma.</p></div>
+      <div class="feature-card"><div class="feature-icon">💬</div><h3>Suporte Especializado</h3><p>Acesso direto ao conhecimento de Edileuza Oliveira, a maior especialista em Bougainvillea do Brasil.</p></div>
+    </div>
+  </div>
+  <div class="about">
+    <div class="about-inner">
+      <div class="about-quote">Bougainvillea não é uma planta difícil. Ela só precisa de alguém que a entenda.</div>
+      <div class="about-text">
+        <p>Edileuza Oliveira passou mais de 20 anos estudando, cultivando e ensinando sobre Bougainvillea em São Luís, Maranhão. O que começou como uma paixão se tornou a maior referência do Brasil no assunto.</p>
+        <p>Com mais de 148 mil seguidores no Instagram e décadas de experiência prática, Edileuza desenvolveu o EDI Bougainvillea para levar esse conhecimento a qualquer cultivador — do iniciante ao profissional.</p>
+        <div class="about-sig">Edileuza Oliveira<small>Especialista em Bougainvillea · São Luís, MA</small></div>
+      </div>
+    </div>
+  </div>
+  <section class="cta-section" id="cta">
+    <h2>Comece hoje.<br><em>É gratuito.</em></h2>
+    <p>Entre para a lista e seja um dos primeiros a acessar o app.</p>
+    <div class="cta-form" id="cta-form-wrap">
+      <input type="text" id="cta-name" placeholder="Seu nome" autocomplete="name" />
+      <input type="email" id="cta-email" placeholder="Seu melhor e-mail" autocomplete="email" />
+      <button onclick="submitLead('cta')">Quero meu acesso gratuito →</button>
+      <p class="cta-privacy">Sem spam. Apenas novidades do app.</p>
+    </div>
+    <div class="success-msg" id="cta-success"><div class="check">🌺</div><p>Você está na lista!</p><small>Edileuza vai entrar em contato em breve.</small></div>
+  </section>
+  <footer>
+    <div class="footer-logo">EDI <span>Bougainvillea</span></div>
+    <p>© 2026 EDI Bougainvillea · São Luís, Maranhão</p>
+  </footer>
   <script>
-    function fmtPhone(i){let v=i.value.replace(/\D/g,'').slice(0,11);if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3');else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d*)$/,'($1) $2-$3');else if(v.length>2)v=v.replace(/^(\d{2})(\d*)$/,'($1) $2');i.value=v}
-    function handleSubmit(e){e.preventDefault();const b=document.getElementById('submitBtn');b.textContent='Enviando...';b.disabled=true;setTimeout(()=>{document.getElementById('formCard').classList.add('hide');document.getElementById('successCard').classList.add('show');document.getElementById('successCard').scrollIntoView({behavior:'smooth',block:'center'})},800)}
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; }); }, { threshold: 0.1 });
+    document.querySelectorAll('.feature-card, .metric, .about-inner > *').forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+    function submitLead(source) {
+      const emailEl = document.getElementById(source === 'hero' ? 'hero-email' : 'cta-email');
+      const nameEl = source === 'cta' ? document.getElementById('cta-name') : null;
+      const email = emailEl?.value?.trim(); const name = nameEl?.value?.trim() || '';
+      if (!email || !email.includes('@')) { emailEl.style.borderColor = 'rgba(184,50,96,0.8)'; emailEl.focus(); setTimeout(() => emailEl.style.borderColor = '', 2000); return; }
+      const formWrap = document.getElementById(source + '-form-wrap');
+      const successMsg = document.getElementById(source + '-success');
+      formWrap.style.display = 'none'; successMsg.style.display = 'flex';
+      fetch('https://formspree.io/f/YOUR_FORM_ID', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email, name, source, _subject: 'Novo lead EDI Bougainvillea' }) }).catch(() => {});
+    }
+    document.querySelectorAll('input').forEach(inp => { inp.addEventListener('keydown', e => { if (e.key === 'Enter') { const source = inp.id.startsWith('hero') ? 'hero' : 'cta'; submitLead(source); } }); });
   </script>
 </body>
 </html>
