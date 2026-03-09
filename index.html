@@ -3,174 +3,242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EDI Bougainvillea — Diagnóstico Inteligente</title>
+  <title>EDI Bougainvillea — Diagnóstico Inteligente para Buganvílias</title>
+  <meta name="description" content="IA especialista em buganvílias. Diagnostique problemas com uma foto, acesse guias exclusivos e conecte-se com cultivadores do mundo todo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0B1612; --card: #1A2B26; --accent: #2A4A3E;
-      --rose: #B83260; --rose2: #C9396E; --white: #F5F2EE;
-      --dim: rgba(245,242,238,0.6); --border: rgba(245,242,238,0.09);
+      --bg: #080f0c; --bg2: #0f1a16; --card: #131f1a; --accent: #1e3329;
+      --green: #2e5c47; --rose: #c4345e; --rose2: #d4476f; --gold: #c9a962;
+      --white: #f5f2ee; --dim: rgba(245,242,238,.58); --dim2: rgba(245,242,238,.28);
+      --border: rgba(245,242,238,.08); --border2: rgba(245,242,238,.13);
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
-    .glow { position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; }
-    .glow1 { width:700px;height:700px;top:-250px;right:-250px; background:radial-gradient(circle,rgba(184,50,96,.13) 0%,transparent 65%); }
-    .glow2 { width:600px;height:600px;bottom:0;left:-200px; background:radial-gradient(circle,rgba(42,74,62,.28) 0%,transparent 65%); }
-    nav { position: relative; z-index: 10; padding: 26px 48px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display:flex; align-items:center; gap:10px; }
-    .brand-name { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; letter-spacing:.04em; }
-    .brand-name b { color:var(--rose); font-weight:400; }
-    .nav-pill { font-size:12px; color:var(--dim); border:1px solid var(--border); padding:6px 16px; border-radius:100px; letter-spacing:.05em; }
-    .hero { position:relative; z-index:10; max-width:780px; margin:0 auto; padding:72px 48px 56px; text-align:center; }
-    .tag { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--rose); border:1px solid rgba(184,50,96,.3); background:rgba(184,50,96,.06); padding:7px 18px; border-radius:100px; margin-bottom:32px; }
-    .tag::before { content:''; width:6px;height:6px; background:var(--rose); border-radius:50%; animation:blink 2s ease-in-out infinite; }
-    @keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.6);}}
-    h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,7vw,70px); font-weight:300; line-height:1.06; letter-spacing:-.01em; margin-bottom:12px; }
-    h1 em { font-style:italic; color:var(--rose2); }
-    .sub { font-family:'Cormorant Garamond',serif; font-size:clamp(17px,2.8vw,23px); font-weight:300; font-style:italic; color:var(--dim); margin-bottom:48px; line-height:1.55; }
-    .form-wrap { position:relative; z-index:10; max-width:500px; margin:0 auto; padding:0 24px; }
-    .form-box { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:34px 32px 28px; }
-    .form-label { text-align:center; font-size:14px; color:var(--dim); margin-bottom:22px; letter-spacing:.01em; }
-    .form-label strong { color:var(--white); font-weight:500; }
-    .fields { display:flex; flex-direction:column; gap:11px; margin-bottom:14px; }
+    .glow { position: fixed; border-radius: 50%; filter: blur(160px); pointer-events: none; z-index: 0; }
+    .glow1 { width:800px;height:800px;top:-300px;right:-300px;background:radial-gradient(circle,rgba(196,52,94,.11) 0%,transparent 65%); }
+    .glow2 { width:700px;height:700px;bottom:-200px;left:-250px;background:radial-gradient(circle,rgba(46,92,71,.22) 0%,transparent 65%); }
+    .glow3 { width:500px;height:500px;top:60vh;left:50%;background:radial-gradient(circle,rgba(196,52,94,.06) 0%,transparent 65%); }
+    nav { position:relative;z-index:20;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .brand { display:flex;align-items:center;gap:11px;text-decoration:none; }
+    .brand-logo { width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1e3329 0%,#2e5c47 100%);border:1px solid rgba(201,169,98,.2);display:flex;align-items:center;justify-content:center; }
+    .brand-name { font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:.04em;color:var(--white); }
+    .brand-name b { color:var(--rose);font-weight:400; }
+    .nav-badge { font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,98,.25);background:rgba(201,169,98,.06);padding:5px 14px;border-radius:100px; }
+    .hero { position:relative;z-index:10;max-width:860px;margin:0 auto;padding:96px 48px 64px;text-align:center; }
+    .hero-tag { display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);border:1px solid rgba(196,52,94,.28);background:rgba(196,52,94,.07);padding:7px 18px;border-radius:100px;margin-bottom:36px; }
+    .hero-tag::before { content:'';width:6px;height:6px;background:var(--rose);border-radius:50%;animation:pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.55);} }
+    h1 { font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7.5vw,76px);font-weight:300;line-height:1.04;letter-spacing:-.015em;margin-bottom:28px; }
+    h1 em { font-style:italic;color:var(--rose2); }
+    h1 span { color:var(--gold); }
+    .hero-sub { font-size:clamp(15px,2.2vw,18px);color:var(--dim);line-height:1.7;max-width:560px;margin:0 auto 56px;font-weight:300; }
+    .form-wrap { position:relative;z-index:10;max-width:480px;margin:0 auto;padding:0 24px; }
+    .form-card { background:var(--card);border:1px solid var(--border2);border-radius:24px;padding:36px 32px 30px;box-shadow:0 24px 80px rgba(0,0,0,.4); }
+    .form-headline { text-align:center;margin-bottom:26px; }
+    .form-headline strong { display:block;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:6px; }
+    .form-headline span { font-size:13px;color:var(--dim2); }
+    .fields { display:flex;flex-direction:column;gap:12px;margin-bottom:16px; }
     .field { position:relative; }
-    .field svg { position:absolute; left:15px; top:50%; transform:translateY(-50%); opacity:.38; pointer-events:none; }
-    input { width:100%; background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:12px; padding:14px 14px 14px 42px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:300; color:var(--white); outline:none; transition:border-color .2s, background .2s; }
-    input::placeholder { color:rgba(245,242,238,.28); }
-    input:focus { border-color:rgba(184,50,96,.5); background:rgba(184,50,96,.04); }
-    .btn { width:100%; padding:16px; background:linear-gradient(135deg,var(--rose) 0%,var(--rose2) 100%); border:none; border-radius:12px; color:#fff; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; letter-spacing:.02em; cursor:pointer; box-shadow:0 8px 32px rgba(184,50,96,.3); transition:opacity .2s, transform .15s; }
-    .btn:hover { opacity:.9; transform:translateY(-1px); }
-    .privacy { text-align:center; font-size:11px; color:rgba(245,242,238,.28); margin-top:12px; }
-    .success { display:none; text-align:center; padding:16px 0; }
-    .check-circle { width:52px;height:52px; border-radius:50%; background:rgba(184,50,96,.1); border:1px solid rgba(184,50,96,.3); display:flex;align-items:center;justify-content:center; margin:0 auto 14px; }
-    .success h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; margin-bottom:7px; }
-    .success p { font-size:13px; color:var(--dim); line-height:1.6; }
-    .proof { position:relative; z-index:10; max-width:500px; margin:16px auto 0; padding:0 24px; display:flex; align-items:center; justify-content:center; gap:10px; }
-    .avs { display:flex; }
-    .av { width:28px;height:28px; border-radius:50%; border:2px solid var(--bg); margin-left:-8px; background:var(--accent); display:flex; align-items:center;justify-content:center; font-size:11px; color:var(--rose); }
+    .field-icon { position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.35;pointer-events:none;display:flex; }
+    input[type="text"],input[type="email"],input[type="tel"] { width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:14px;padding:15px 15px 15px 44px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--white);outline:none;transition:border-color .2s,background .2s; }
+    input::placeholder { color:rgba(245,242,238,.25); }
+    input:focus { border-color:rgba(196,52,94,.45);background:rgba(196,52,94,.04); }
+    .btn-submit { width:100%;padding:17px;background:linear-gradient(135deg,var(--rose) 0%,var(--rose2) 100%);border:none;border-radius:14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:.02em;cursor:pointer;box-shadow:0 8px 40px rgba(196,52,94,.35);transition:opacity .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:8px; }
+    .btn-submit:hover:not(:disabled) { opacity:.92;transform:translateY(-2px);box-shadow:0 12px 48px rgba(196,52,94,.45); }
+    .btn-submit:disabled { opacity:.65;cursor:not-allowed; }
+    .spinner { display:none;width:18px;height:18px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg);} }
+    .btn-submit.loading .btn-text { display:none; }
+    .btn-submit.loading .spinner { display:block; }
+    .error-msg { display:none;font-size:12px;color:#f87171;text-align:center;margin-top:10px;padding:10px;background:rgba(248,113,113,.08);border-radius:10px;border:1px solid rgba(248,113,113,.2); }
+    .privacy { text-align:center;font-size:11px;color:var(--dim2);margin-top:13px;display:flex;align-items:center;justify-content:center;gap:5px; }
+    .success-state { display:none;text-align:center;padding:12px 0; }
+    .check-ring { width:60px;height:60px;border-radius:50%;background:rgba(46,92,71,.2);border:1px solid rgba(46,92,71,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;animation:pop .4s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes pop { from{transform:scale(.6);opacity:0;}to{transform:scale(1);opacity:1;} }
+    .success-state h3 { font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:8px; }
+    .success-state p { font-size:14px;color:var(--dim);line-height:1.6; }
+    .proof { position:relative;z-index:10;max-width:480px;margin:20px auto 0;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px; }
+    .avatars { display:flex; }
+    .av { width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-9px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--rose);letter-spacing:0; }
     .av:first-child { margin-left:0; }
-    .proof-txt { font-size:12px; color:var(--dim); }
-    .proof-txt strong { color:var(--white); font-weight:500; }
-    .sep { position:relative;z-index:10; max-width:780px; margin:64px auto; padding:0 48px; display:flex;align-items:center;gap:16px; }
-    .sep-line { flex:1;height:1px;background:var(--border); }
-    .sep-txt { font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,242,238,.22); }
-    .features { position:relative;z-index:10; max-width:780px; margin:0 auto; padding:0 48px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .feat { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px 22px; transition:border-color .25s,transform .25s; }
-    .feat:hover { border-color:rgba(184,50,96,.25); transform:translateY(-3px); }
-    .feat-ico { width:40px;height:40px; border-radius:10px; background:rgba(184,50,96,.1); border:1px solid rgba(184,50,96,.2); display:flex;align-items:center;justify-content:center; margin-bottom:14px; }
-    .feat h3 { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; margin-bottom:7px; }
-    .feat p { font-size:13px; color:var(--dim); line-height:1.6; }
-    .stats { position:relative;z-index:10; max-width:780px; margin:0 auto 80px; padding:0 48px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
-    .stat { background:var(--card); padding:30px 20px; text-align:center; }
-    .stat-n { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--white); line-height:1; margin-bottom:5px; }
+    .proof-text { font-size:12px;color:var(--dim); }
+    .proof-text strong { color:var(--white);font-weight:500; }
+    .divider { position:relative;z-index:10;max-width:780px;margin:80px auto 0;padding:0 48px;display:flex;align-items:center;gap:18px; }
+    .div-line { flex:1;height:1px;background:var(--border); }
+    .div-text { font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2); }
+    .features { position:relative;z-index:10;max-width:780px;margin:48px auto 0;padding:0 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+    .feat { background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px 24px;transition:border-color .3s,transform .3s; }
+    .feat:hover { border-color:rgba(196,52,94,.22);transform:translateY(-4px); }
+    .feat-icon { width:44px;height:44px;border-radius:12px;background:rgba(196,52,94,.09);border:1px solid rgba(196,52,94,.18);display:flex;align-items:center;justify-content:center;margin-bottom:18px; }
+    .feat h3 { font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:8px; }
+    .feat p { font-size:13px;color:var(--dim);line-height:1.65; }
+    .how { position:relative;z-index:10;max-width:780px;margin:80px auto 0;padding:0 48px; }
+    .how-title { font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;text-align:center;margin-bottom:48px; }
+    .steps { display:grid;grid-template-columns:repeat(3,1fr);gap:32px; }
+    .step { text-align:center; }
+    .step-num { width:48px;height:48px;border-radius:50%;background:var(--accent);border:1px solid rgba(201,169,98,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--gold); }
+    .step h4 { font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:8px; }
+    .step p { font-size:13px;color:var(--dim);line-height:1.65; }
+    .stats { position:relative;z-index:10;max-width:780px;margin:80px auto 0;padding:0 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden; }
+    .stat { background:var(--card);padding:36px 20px;text-align:center; }
+    .stat-n { font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1;margin-bottom:6px; }
     .stat-n span { color:var(--rose); }
-    .stat-l { font-size:12px; color:var(--dim); letter-spacing:.04em; }
-    .quote { position:relative;z-index:10; max-width:600px; margin:0 auto 80px; padding:0 48px; text-align:center; }
-    .qmark { font-family:'Cormorant Garamond',serif; font-size:88px; line-height:.55; color:var(--rose); opacity:.35; display:block; margin-bottom:12px; }
-    .qtext { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,3vw,26px); font-weight:300; font-style:italic; color:var(--white); line-height:1.55; margin-bottom:18px; }
-    .qauthor { font-size:13px; color:var(--dim); }
-    .qauthor strong { color:var(--white); font-weight:500; }
-    footer { position:relative;z-index:10; text-align:center; padding:28px 48px; border-top:1px solid var(--border); }
-    footer p { font-size:12px; color:rgba(245,242,238,.22); letter-spacing:.03em; }
-    footer a { color:rgba(245,242,238,.38); text-decoration:none; }
+    .stat-l { font-size:12px;color:var(--dim);letter-spacing:.04em; }
+    .quote { position:relative;z-index:10;max-width:640px;margin:80px auto 0;padding:0 48px;text-align:center; }
+    .q-card { background:var(--card);border:1px solid var(--border2);border-radius:24px;padding:48px 40px 40px;position:relative; }
+    .q-mark { font-family:'Cormorant Garamond',serif;font-size:100px;line-height:.5;color:var(--rose);opacity:.22;position:absolute;top:32px;left:32px; }
+    .q-text { font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,26px);font-weight:300;font-style:italic;line-height:1.6;margin-bottom:24px;position:relative; }
+    .q-author { font-size:13px;color:var(--dim); }
+    .q-author strong { color:var(--gold);font-weight:500; }
+    .cta-bottom { position:relative;z-index:10;text-align:center;margin:80px auto 0;padding:0 48px;max-width:560px; }
+    .cta-bottom p { font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);font-weight:300;line-height:1.25;margin-bottom:32px; }
+    .cta-bottom p em { font-style:italic;color:var(--rose2); }
+    .btn-cta { display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,var(--rose) 0%,var(--rose2) 100%);border:none;border-radius:14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:.02em;cursor:pointer;box-shadow:0 8px 40px rgba(196,52,94,.35);text-decoration:none;transition:opacity .2s,transform .15s; }
+    .btn-cta:hover { opacity:.9;transform:translateY(-2px); }
+    footer { position:relative;z-index:10;text-align:center;margin-top:96px;padding:28px 48px;border-top:1px solid var(--border); }
+    footer p { font-size:12px;color:var(--dim2);letter-spacing:.03em; }
+    footer a { color:rgba(245,242,238,.4);text-decoration:none;transition:color .2s; }
     footer a:hover { color:var(--rose); }
-    .fu { opacity:0; transform:translateY(22px); animation:fu .7s ease forwards; }
-    .d1{animation-delay:.0s}.d2{animation-delay:.1s}.d3{animation-delay:.2s}.d4{animation-delay:.32s}.d5{animation-delay:.46s}
-    @keyframes fu { to{opacity:1;transform:translateY(0);} }
+    .fu { opacity:0;transform:translateY(24px);animation:fadeUp .7s ease forwards; }
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.38s}.d5{animation-delay:.52s}
+    @keyframes fadeUp { to{opacity:1;transform:translateY(0);} }
     @media(max-width:640px){
-      nav{padding:18px 22px;} .nav-pill{display:none;} .hero{padding:56px 22px 40px;}
-      .sep,.quote{padding:0 22px;} .features{grid-template-columns:1fr;padding:0 22px 60px;}
-      .stats{grid-template-columns:1fr;margin:0 22px 60px;} footer{padding:22px;}
+      nav{padding:18px 22px;} .nav-badge{display:none;} .hero{padding:64px 22px 48px;}
+      .form-card{padding:28px 22px 24px;} .divider,.quote,.cta-bottom{padding:0 22px;}
+      .features{grid-template-columns:1fr;padding:0 22px;} .steps{grid-template-columns:1fr;gap:24px;}
+      .how{padding:0 22px;} .stats{grid-template-columns:1fr;margin:80px 22px 0;} footer{padding:22px;}
     }
   </style>
 </head>
 <body>
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
+<div class="glow glow3"></div>
 <nav>
-  <div class="brand">
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-      <circle cx="15" cy="15" r="14" stroke="#B83260" stroke-width="1.1" stroke-opacity=".4"/>
-      <path d="M15 7C15 7 9 11 9 16C9 19.3 11.7 22 15 22C18.3 22 21 19.3 21 16C21 11 15 7 15 7Z" fill="#B83260" fill-opacity=".2" stroke="#B83260" stroke-width="1.1"/>
-      <path d="M15 22V27" stroke="#2A4A3E" stroke-width="1.4" stroke-linecap="round"/>
-      <circle cx="15" cy="16" r="2.2" fill="#B83260" fill-opacity=".6"/>
-    </svg>
+  <a href="#" class="brand">
+    <div class="brand-logo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2C10 2 5 6 5 11C5 13.761 7.239 16 10 16C12.761 16 15 13.761 15 11C15 6 10 2 10 2Z" fill="#2e5c47" fill-opacity=".6" stroke="#c9a962" stroke-width=".9"/>
+        <path d="M10 16V19" stroke="#c9a962" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="10" cy="11" r="2" fill="#c9a962" fill-opacity=".5"/>
+      </svg>
+    </div>
     <span class="brand-name">EDI<b>Bougainvillea</b></span>
-  </div>
-  <span class="nav-pill">Acesso gratuito</span>
+  </a>
+  <span class="nav-badge">Acesso gratuito</span>
 </nav>
 <div class="hero">
-  <div class="tag fu d1">Diagn&#243;stico inteligente por IA</div>
-  <h1 class="fu d2">Sua Bougainvillea<br/><em>nunca mais vai sofrer.</em></h1>
-  <p class="sub fu d3">Tecnologia aplicada ao cultivo profissional.<br/>Desenvolvido por quem tem 20 anos de experi&#234;ncia.</p>
+  <div class="hero-tag fu d1">IA especialista em buganvílias</div>
+  <h1 class="fu d2">Sua buganvílea <em>sempre</em><br/>saudável e <span>florescendo.</span></h1>
+  <p class="hero-sub fu d3">Diagnostique problemas com uma foto, acesse guias exclusivos de Edileuza Oliveira e conecte-se com cultivadores do mundo todo.</p>
 </div>
 <div class="form-wrap fu d4">
-  <div class="form-box">
-    <p class="form-label"><strong>Receba acesso gratuito</strong> ao diagn&#243;stico por IA</p>
-    <div id="fc">
+  <div class="form-card">
+    <div id="form-state">
+      <div class="form-headline">
+        <strong>Quero acesso gratuito</strong>
+        <span>Diagnóstico por IA + comunidade de cultivadores</span>
+      </div>
       <div class="fields">
         <div class="field">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 8C9.933 8 11.5 6.433 11.5 4.5C11.5 2.567 9.933 1 8 1C6.067 1 4.5 2.567 4.5 4.5C4.5 6.433 6.067 8 8 8Z" stroke="#F5F2EE" stroke-width="1.2"/><path d="M2 14.5C2 11.462 4.686 9 8 9C11.314 9 14 11.462 14 14.5" stroke="#F5F2EE" stroke-width="1.2" stroke-linecap="round"/></svg>
-          <input type="text" id="nome" placeholder="Seu nome" autocomplete="name"/>
+          <span class="field-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 8C9.933 8 11.5 6.433 11.5 4.5C11.5 2.567 9.933 1 8 1C6.067 1 4.5 2.567 4.5 4.5C4.5 6.433 6.067 8 8 8Z" stroke="#f5f2ee" stroke-width="1.2"/><path d="M2 14.5C2 11.462 4.686 9 8 9C11.314 9 14 11.462 14 14.5" stroke="#f5f2ee" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+          <input type="text" id="inp-name" placeholder="Seu nome completo" autocomplete="name" />
         </div>
         <div class="field">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#F5F2EE" stroke-width="1.2"/><path d="M1 5.5L8 9.5L15 5.5" stroke="#F5F2EE" stroke-width="1.2"/></svg>
-          <input type="email" id="email" placeholder="Seu melhor e-mail" autocomplete="email"/>
+          <span class="field-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#f5f2ee" stroke-width="1.2"/><path d="M1 5.5L8 9.5L15 5.5" stroke="#f5f2ee" stroke-width="1.2"/></svg></span>
+          <input type="email" id="inp-email" placeholder="Seu melhor e-mail" autocomplete="email" />
         </div>
         <div class="field">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2H6L7.5 5.5L5.5 6.5C6.5 8.5 7.5 9.5 9.5 10.5L10.5 8.5L14 10V13C14 13.552 13.552 14 13 14C6.373 14 2 9.627 2 3C2 2.448 2.448 2 3 2Z" stroke="#F5F2EE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <input type="tel" id="tel" placeholder="WhatsApp (opcional)" autocomplete="tel"/>
+          <span class="field-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2H6L7.5 5.5L5.5 6.5C6.5 8.5 7.5 9.5 9.5 10.5L10.5 8.5L14 10V13C14 13.552 13.552 14 13 14C6.373 14 2 9.627 2 3C2 2.448 2.448 2 3 2Z" stroke="#f5f2ee" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <input type="tel" id="inp-phone" placeholder="WhatsApp (opcional)" autocomplete="tel" />
         </div>
       </div>
-      <button class="btn" onclick="doSubmit()">Quero acesso gratuito &#8594;</button>
-      <p class="privacy">Sem spam. Seus dados est&#227;o protegidos.</p>
+      <button class="btn-submit" id="btn-submit" onclick="handleSubmit()">
+        <span class="btn-text">Quero acesso gratuito &rarr;</span>
+        <div class="spinner"></div>
+      </button>
+      <div class="error-msg" id="error-msg"></div>
+      <p class="privacy">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" stroke="#f5f2ee" stroke-width="1" stroke-opacity=".3"/><path d="M4 5V3.5C4 2.119 4.895 1 6 1C7.105 1 8 2.119 8 3.5V5" stroke="#f5f2ee" stroke-width="1" stroke-opacity=".3" stroke-linecap="round"/></svg>
+        Sem spam. Dados protegidos.
+      </p>
     </div>
-    <div class="success" id="ok">
-      <div class="check-circle"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11L9 16L18 6" stroke="#B83260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h3>Voc&#234; est&#225; dentro!</h3>
+    <div class="success-state" id="success-state">
+      <div class="check-ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12L10 18L20 6" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Você está dentro!</h3>
       <p>Acesso enviado para seu e-mail.<br/>Fique de olho na caixa de entrada.</p>
     </div>
   </div>
 </div>
 <div class="proof fu d5">
-  <div class="avs">
-    <div class="av" style="background:#2A4A3E">A</div>
-    <div class="av" style="background:#1F3A30">M</div>
-    <div class="av" style="background:#163028">L</div>
-    <div class="av" style="background:#2A4A3E">J</div>
+  <div class="avatars">
+    <div class="av" style="background:#1e3329">A</div>
+    <div class="av" style="background:#162b22">M</div>
+    <div class="av" style="background:#0f201a">L</div>
+    <div class="av" style="background:#1e3329">J</div>
+    <div class="av" style="background:#162b22">R</div>
   </div>
-  <p class="proof-txt"><strong>+200 mil cultivadores</strong> j&#225; confiam na Edileuza</p>
+  <p class="proof-text"><strong>+200 mil cultivadores</strong> já confiam na Edileuza</p>
 </div>
-<div class="sep"><div class="sep-line"></div><span class="sep-txt">O que voc&#234; vai receber</span><div class="sep-line"></div></div>
+<div class="divider"><div class="div-line"></div><span class="div-text">O que você vai ter acesso</span><div class="div-line"></div></div>
 <div class="features">
-  <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#B83260" stroke-width="1.3"/><path d="M10 4C10 4 7 7 7 10C7 11.657 8.343 13 10 13C11.657 13 13 11.657 13 10C13 7 10 4 10 4Z" fill="#B83260" fill-opacity=".2" stroke="#B83260" stroke-width="1.1"/></svg></div><h3>Diagn&#243;stico por IA</h3><p>Identifique problemas com foto e receba tratamento preciso em segundos.</p></div>
-  <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.39 7.26L18 8.18L14 12.08L14.9 17.7L10 15.18L5.1 17.7L6 12.08L2 8.18L7.61 7.26L10 2Z" stroke="#B83260" stroke-width="1.3" stroke-linejoin="round" fill="#B83260" fill-opacity=".15"/></svg></div><h3>Guias exclusivos</h3><p>Tutoriais de enxertia, aduba&#231;&#227;o e flora&#231;&#227;o desenvolvidos por Edileuza Oliveira.</p></div>
-  <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 18C14.418 18 18 14.418 18 10C18 5.582 14.418 2 10 2C5.582 2 2 5.582 2 10C2 14.418 5.582 18 10 18Z" stroke="#B83260" stroke-width="1.3"/><path d="M7 10H13M10 7V13" stroke="#B83260" stroke-width="1.3" stroke-linecap="round"/></svg></div><h3>Comunidade global</h3><p>Conecte-se com cultivadores do mundo todo e compartilhe suas conquistas.</p></div>
+  <div class="feat"><div class="feat-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#c4345e" stroke-width="1.3"/><path d="M11 4C11 4 7 7.5 7 11C7 13.209 8.791 15 11 15C13.209 15 15 13.209 15 11C15 7.5 11 4 11 4Z" fill="#c4345e" fill-opacity=".2" stroke="#c4345e" stroke-width="1.1"/><circle cx="11" cy="11" r="2" fill="#c4345e" fill-opacity=".5"/></svg></div><h3>Diagnóstico por IA</h3><p>Tire uma foto, envie e receba a análise completa com tratamento preciso em segundos.</p></div>
+  <div class="feat"><div class="feat-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L13.6 7.6L20 8.6L15.5 12.9L16.6 19.3L11 16.4L5.4 19.3L6.5 12.9L2 8.6L8.4 7.6L11 2Z" stroke="#c4345e" stroke-width="1.3" stroke-linejoin="round" fill="#c4345e" fill-opacity=".15"/></svg></div><h3>Guias exclusivos</h3><p>Tutoriais de enxertia, adubação e floração desenvolvidos por Edileuza Oliveira em 20 anos de cultivo.</p></div>
+  <div class="feat"><div class="feat-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#c4345e" stroke-width="1.3"/><circle cx="7.5" cy="11" r="2" fill="#c4345e" fill-opacity=".4"/><circle cx="14.5" cy="11" r="2" fill="#c4345e" fill-opacity=".4"/><path d="M9.5 11H12.5" stroke="#c4345e" stroke-width="1.2"/></svg></div><h3>Comunidade global</h3><p>Compartilhe suas plantas, conquistas e tire dúvidas com cultivadores de todo o mundo.</p></div>
+</div>
+<div class="how">
+  <h2 class="how-title">Como funciona</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Tire uma foto</h4><p>Fotografe sua buganvílea — folhas, flores, caule ou raízes. Qualquer câmera funciona.</p></div>
+    <div class="step"><div class="step-num">2</div><h4>A IA analisa</h4><p>Nossa IA especialista identifica o problema, a causa raiz e o estágio de desenvolvimento.</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Receba o tratamento</h4><p>Instruções claras e personalizadas para recuperar ou potencializar sua planta.</p></div>
+  </div>
 </div>
 <div class="stats">
-  <div class="stat"><div class="stat-n">20<span>+</span></div><div class="stat-l">Anos de experi&#234;ncia</div></div>
+  <div class="stat"><div class="stat-n">20<span>+</span></div><div class="stat-l">Anos de experiência</div></div>
   <div class="stat"><div class="stat-n">200<span>k</span></div><div class="stat-l">Seguidores cultivados</div></div>
   <div class="stat"><div class="stat-n">70<span>+</span></div><div class="stat-l">Variedades catalogadas</div></div>
 </div>
 <div class="quote">
-  <span class="qmark">&#8220;</span>
-  <p class="qtext">Bougainvillea &#233; paix&#227;o que se aprende com paci&#234;ncia e conhecimento. Estou aqui para te ensinar cada detalhe.</p>
-  <p class="qauthor"><strong>Edileuza Oliveira</strong> &middot; S&#227;o Lu&#237;s, Maranh&#227;o</p>
+  <div class="q-card">
+    <span class="q-mark">&ldquo;</span>
+    <p class="q-text">Buganvílea é paixão que se aprende com paciência e conhecimento. Estou aqui para te ensinar cada detalhe — do solo à floração perfeita.</p>
+    <p class="q-author"><strong>Edileuza Oliveira</strong> &nbsp;&middot;&nbsp; Santa Luzia, Maranhão</p>
+  </div>
 </div>
-<footer><p>&#169; 2025 EDI Bougainvillea &middot; S&#227;o Lu&#237;s, MA &middot; <a href="mailto:contato@edibougainvillea.com.br">contato@edibougainvillea.com.br</a></p></footer>
+<div class="cta-bottom">
+  <p>Pronta para ver sua buganvílea <em>florescer de verdade?</em></p>
+  <a href="#" class="btn-cta" onclick="document.getElementById('inp-name').focus();window.scrollTo({top:0,behavior:'smooth'});return false;">Quero acesso gratuito &rarr;</a>
+</div>
+<footer>
+  <p>&copy; 2025 EDI Bougainvillea &middot; Santa Luzia, MA &middot; <a href="mailto:contato@edibougainvillea.com.br">contato@edibougainvillea.com.br</a></p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-function doSubmit() {
-  const nome = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
-  if (!nome) { alert('Por favor, informe seu nome.'); return; }
-  if (!email || !email.includes('@')) { alert('Por favor, informe um e-mail v&#225;lido.'); return; }
-  document.getElementById('fc').style.display = 'none';
-  document.getElementById('ok').style.display = 'block';
-}
-document.addEventListener('keydown', e => { if(e.key==='Enter') doSubmit(); });
+  const { createClient } = supabase;
+  const sb = createClient('https://clazmwmzubadlxmhveqz.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYXptd216dWJhZGx4bWh2ZXF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNzk3NjAsImV4cCI6MjA4Nzg1NTc2MH0.qEELQz-KpiNtI3u2G5df0rjxRx7cE0TMtT7xV81BoOY');
+  async function handleSubmit() {
+    const name=document.getElementById('inp-name').value.trim();
+    const email=document.getElementById('inp-email').value.trim();
+    const phone=document.getElementById('inp-phone').value.trim();
+    const btn=document.getElementById('btn-submit');
+    const err=document.getElementById('error-msg');
+    err.style.display='none';
+    if(!name){showError('Por favor, informe seu nome.');return;}
+    if(!email||!email.includes('@')){showError('Por favor, informe um e-mail válido.');return;}
+    btn.disabled=true;btn.classList.add('loading');
+    const{error}=await sb.from('leads').insert({name,email:email.toLowerCase(),phone:phone||null,source:'landing'});
+    btn.disabled=false;btn.classList.remove('loading');
+    if(error){error.code==='23505'?showSuccess():showError('Erro ao salvar. Tente novamente.');return;}
+    showSuccess();
+  }
+  function showError(msg){const err=document.getElementById('error-msg');err.textContent=msg;err.style.display='block';}
+  function showSuccess(){document.getElementById('form-state').style.display='none';document.getElementById('success-state').style.display='block';}
+  document.addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit();});
 </script>
 </body>
 </html>
